@@ -1,0 +1,33 @@
+.link {
+  text-decoration: underline;
+}
+
+.socail {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+
+  ion-button {
+    margin: 0;
+    border-radius: 8px !important;
+    padding: 18px, 24px, 18px, 24px !important;
+    --background: #256b92 !important;
+    color: #fff !important;
+    --background-activated: transparent !important;
+    --background-focused: transparent !important;
+    --background-hover: transparent !important;
+    --ripple-color: transparent !important;
+  }
+}
+
+.mr {
+  margin-right: 10px !important;
+}
+
+.ml {
+  margin-left: 10px !important;
+}
+
+ion-img {
+  height: 200px;
+}

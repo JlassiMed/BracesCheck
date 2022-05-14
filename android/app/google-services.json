@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "478541145753",
+    "project_id": "bracescheck",
+    "storage_bucket": "bracescheck.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478541145753:android:403edc884b570477f9fa08",
+        "android_client_info": {
+          "package_name": "com.bracescheck"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478541145753-mgsar4l92ug4kjojphdekitous1ngad7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bracescheck",
+            "certificate_hash": "7ffcc7c8497f1c77d77ba5795e7e517f5a986c22"
+          }
+        },
+        {
+          "client_id": "478541145753-68d24v167r7g7pd2csvpa1an8ivgklvc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAE1vr8kct1EM_JnQxl3jfkKxTCdbQ5Lc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478541145753-68d24v167r7g7pd2csvpa1an8ivgklvc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "478541145753-j5bds8ira8q5q8gd97s4dvdls143cm7v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bracescheck"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

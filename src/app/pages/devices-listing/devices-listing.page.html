@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" mode="ios">
+      <ion-back-button class="clr"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Pair Device</ion-title>
+    <ion-buttons class="mr" slot="end" mode="ios" *ngIf="!scaning">
+      <ion-icon class="clr" name="refresh-outline" (click)="scanNow()"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <!-- <div *ngIf="scaning" class="center">
+      <ion-spinner class="clr" name="bubbles"></ion-spinner>
+    </div> -->
+
+    <div *ngIf="!scaning">
+      <ion-item *ngFor="let device of foundDevices">
+        <ion-label (click)="onDeviceClick(device)">
+          <h2>Name: {{ device.name || 'Unnamed' }}</h2>
+          <p>Address: {{ device.address }}</p>
+        </ion-label>
+      </ion-item>
+    </div>
+
+    <div *ngIf="foundDevices.length == 0 && !scaning" class="center">
+      <ion-text class="clr">No device found.</ion-text>
+    </div>
+  </ion-list>
+</ion-content>

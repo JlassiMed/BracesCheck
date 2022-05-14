@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Request Appointment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2 class="title">You can suggest a date here</h2>
+
+  <ion-datetime size="cover" #dateTime presentation="date" (ionChange)="dateChanged()"></ion-datetime>
+
+  <ion-button class="mt btn-default" (click)="onSubmitClick()">Submit</ion-button>
+</ion-content>

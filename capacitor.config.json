@@ -1,0 +1,16 @@
+{
+	"appId": "com.bracescheck",
+	"appName": "BracesCheck",
+	"webDir": "www",
+	"plugins": {
+		"GoogleAuth": {
+			"scopes": [
+				"profile",
+				"email"
+			],
+			"serverClientId": "478541145753-68d24v167r7g7pd2csvpa1an8ivgklvc.apps.googleusercontent.com",
+			"forceCodeForRefreshToken": true
+		}
+	},
+	"bundledWebRuntime": false
+}

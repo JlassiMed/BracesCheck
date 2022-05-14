@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Devices</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item (click)="onAddNewDeviceClick()">
+    <ion-label>Add new device</ion-label>
+    <ion-icon slot="end" class="clr" name="add-outline"></ion-icon>
+  </ion-item>
+
+  <ion-accordion-group *ngIf="devices.length > 0">
+    <ion-accordion *ngFor="let device of devices, index as i" value="{{device.address}}"
+      toggle-icon="arrow-down-circle">
+      <ion-item slot="header">
+        <ion-label>Device {{i + 1}}</ion-label>
+      </ion-item>
+
+      <ion-list slot="content">
+        <ion-item lines="none">
+          <ion-label>Email: {{device.email}}</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label>Device Name: {{device.name}}</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label>Mac Address: {{device.address}}</ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label>Battery Life: {{appService.getBatteryLevel()}}/100</ion-label>
+        </ion-item>
+        <ion-item lines="none" (click)="pairDevice(device)">
+          <ion-label>Connection Status: {{appService.getPairedDevice() == device.address ? appService.getRSSI() <= 60 ? 'Great' : appService.getRSSI() > 60 && appService.getRSSI() <= 100 ? 'Good' : 'Bad' : 'Click to connect'}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-accordion>
+  </ion-accordion-group>
+
+  <div *ngIf="devices.length == 0 && dataLoaded" class="center">
+    <ion-text class="clr">No device found.</ion-text>
+  </div>
+</ion-content>

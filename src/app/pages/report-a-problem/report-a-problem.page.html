@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Report a Problem</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">Problem</ion-label>
+    <ion-textarea rows="6" [(ngModel)]="problem" placeholder="Write problem..."></ion-textarea>
+    <ion-text class="error" *ngIf="submitted && problem == ''">Problem is required.</ion-text>
+  </ion-item>
+
+  <ion-button class="mt btn-default" (click)="onSubmitClick()">Submit</ion-button>
+</ion-content>

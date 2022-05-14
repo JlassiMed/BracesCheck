@@ -1,0 +1,39 @@
+<ion-tabs>
+
+  <ion-tab-bar slot="bottom" *ngIf="appService.getProfile().role == 'doctor'">
+    <ion-tab-button tab="devices">
+      <ion-label>Devices</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="home">
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="profile">
+      <ion-label>Profile</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button (click)="logout()">
+      <ion-label>Logout</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+  <ion-tab-bar slot="bottom" *ngIf="appService.getProfile().role == 'patient'">
+    <ion-tab-button tab="request-appointment">
+      <ion-label>Request Appointment</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="report-a-problem">
+      <ion-label>Report A Problem</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="profile">
+      <ion-label>Profile</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button (click)="logout()">
+      <ion-label>Logout</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>

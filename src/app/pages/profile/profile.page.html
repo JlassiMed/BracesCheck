@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">Email</ion-label>
+    <ion-input value="{{appService.getProfile().email}}" readonly placeholder="Enter email" type="email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Name</ion-label>
+    <ion-input value="{{appService.getProfile().name}}" readonly placeholder="Enter name" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Date of Birth</ion-label>
+    <p id="open-home-profile">{{appService.searchFormatDate(appService.getProfile().dateOfBirth)}}</p>
+    <ion-modal trigger="open-home-profile" class="date_modal">
+      <ng-template>
+        <ion-content>
+          <ion-datetime [locale]="selectedLanguage" #dateTimeProfile presentation="date" size="cover"
+            (ionChange)="dateChanged()">
+            <ion-buttons slot="buttons">
+              <ion-button (click)="confirm()">Confirm</ion-button>
+              <ion-button (click)="cancel()">Cancel</ion-button>
+            </ion-buttons>
+          </ion-datetime>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Gender</ion-label>
+    <ion-select [(ngModel)]="gender" placeholder="Select gender" (ionChange)="onGenderChange($event)">
+      <ion-select-option value="female">Female</ion-select-option>
+      <ion-select-option value="male">Male</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Role</ion-label>
+    <p class="cap">{{appService.getProfile().role}}</p>
+  </ion-item>
+</ion-content>

@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="deviceData.length == 0 && dataLoaded" class="center">
+    <ion-text class="clr">No device connected.</ion-text>
+  </div>
+
+  <ion-list *ngIf="deviceData.length > 0 && dataLoaded">
+    <ion-item lines="none">
+      <ion-label>Patient Name: {{deviceData[0].userName}}</ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>Device Name: {{deviceData[0].name}}</ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>Mac Address: {{deviceData[0].address}}</ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>Battery Life: {{appService.getBatteryLevel()}}/100</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div style="margin-top: 10px;">
+    <div style="margin-bottom: 15px;">
+      <div id="liveGraphContainer"></div>
+    </div>
+  </div>
+
+  <ion-datetime presentation="date" (ionChange)="onDateChange($event)"></ion-datetime>
+
+  <div style="margin-top: 10px;" *ngIf="oldDeviceData.length == 0 && dataLoaded" class="center">
+    <ion-text class="clr">No old data found.</ion-text>
+  </div>
+
+  <div style="margin-top: 10px;">
+    <div style="margin-bottom: 15px;">
+      <div id="oldGraphContainer"></div>
+    </div>
+  </div>
+
+  <div *ngIf="oldDeviceData.length > 0" style="overflow: scroll; height: 250px;">
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Temperature</th>
+        <th>Time</th>
+      </tr>
+      <tr *ngFor="let data of oldDeviceData">
+        <td>{{appService.getDateTimeFormat(data.created_at)}}</td>
+        <td>{{data.temperature}}</td>
+        <td>{{data.time}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <ion-item lines="none" *ngIf="oldDeviceData.length > 0">
+    <ion-label>
+      Statistics
+    </ion-label>
+  </ion-item>
+
+  <div style="margin-top: 10px;">
+    <div style="margin-bottom: 15px;">
+      <div id="statisticsGraphContainer"></div>
+    </div>
+  </div>
+</ion-content>

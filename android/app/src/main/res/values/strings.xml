@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">BracesCheck</string>
+    <string name="title_activity_main">BracesCheck</string>
+    <string name="package_name">com.bracescheck</string>
+    <string name="custom_url_scheme">com.bracescheck</string>
+    <string name="facebook_app_id">488051832776642</string>
+    <string name="fb_login_protocol_scheme">fb488051832776642</string>
+    <string name="server_client_id">478541145753-68d24v167r7g7pd2csvpa1an8ivgklvc.apps.googleusercontent.com</string>
+</resources>

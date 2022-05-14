@@ -1,0 +1,7 @@
+{
+  "name": "BracesCheck",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

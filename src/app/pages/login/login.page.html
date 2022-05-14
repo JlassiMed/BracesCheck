@@ -1,0 +1,133 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title *ngIf="type == 'login'">Login</ion-title>
+    <ion-title *ngIf="type == 'register'">Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form *ngIf="type == 'login'" [formGroup]="loginForm">
+
+    <!-- <ion-img src="../../../assets/images/icon.png"></ion-img> -->
+
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input formControlName="email" placeholder="Enter email" type="email"></ion-input>
+      <ion-text class="error" *ngIf="loginFormSubmitted && loginForm.controls.email.errors">Email is required.
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Password</ion-label>
+      <ion-input formControlName="password" placeholder="Enter password" type="password"></ion-input>
+      <ion-text class="error" *ngIf="loginFormSubmitted && loginForm.controls.password.errors">Password is required.
+      </ion-text>
+    </ion-item>
+
+    <br><br>
+
+    <ion-button class="btn-default" (click)="onLoginClick()">Login</ion-button>
+
+    <ion-item lines="none">
+      <ion-text class="center clr">OR via Social Media</ion-text>
+    </ion-item>
+
+    <div class="socail">
+      <ion-button class="mr" (click)="onFacebookLoginClick()">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-button>
+      <ion-button class="ml" (click)="onGoogleLoginClick()">
+        <ion-icon name="logo-google"></ion-icon>
+      </ion-button>
+    </div>
+
+    <ion-item lines="none">
+      <ion-text slot="end" class="link clr" (click)="onRegisterNowClick('register')">Not registerd yet? Click here
+      </ion-text>
+    </ion-item>
+  </form>
+
+  <form *ngIf="type == 'register'" [formGroup]="registerForm">
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input formControlName="email" placeholder="Enter email" type="email"></ion-input>
+      <ion-text class="error" *ngIf="registerFormSubmitted && registerForm.controls.email.errors">Email is required.
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Name</ion-label>
+      <ion-input formControlName="name" placeholder="Enter name" type="text"></ion-input>
+      <ion-text class="error" *ngIf="registerFormSubmitted && registerForm.controls.name.errors">Name is required.
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Date of Birth</ion-label>
+      <p id="open-home">{{appService.searchFormatDate(registerForm.value.dateOfBirth)}}</p>
+      <ion-modal trigger="open-home" class="date_modal">
+        <ng-template>
+          <ion-content>
+            <ion-datetime [locale]="selectedLanguage" #dateTime presentation="date" size="cover"
+              formControlName="dateOfBirth" (ionChange)="dateChanged()">
+              <ion-buttons slot="buttons">
+                <ion-button (click)="confirm()">Confirm</ion-button>
+                <ion-button (click)="cancel()">Cancel</ion-button>
+              </ion-buttons>
+            </ion-datetime>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+      <ion-text class="error" *ngIf="registerFormSubmitted && registerForm.controls.dateOfBirth.errors">Date of birth is
+        required.</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Gender</ion-label>
+      <ion-select formControlName="gender" placeholder="Select gender">
+        <ion-select-option value="female">Female</ion-select-option>
+        <ion-select-option value="male">Male</ion-select-option>
+      </ion-select>
+      <ion-text class="error" *ngIf="registerFormSubmitted && registerForm.controls.gender.errors">Gender is required.
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Password</ion-label>
+      <ion-input formControlName="password" placeholder="Enter password" type="password"></ion-input>
+      <ion-text class="error" *ngIf="registerFormSubmitted && registerForm.controls.password.errors?.required">Password
+        is required.</ion-text>
+      <ion-text class="error" *ngIf="registerFormSubmitted && registerForm.controls.password.errors?.minlength">Minimum
+        6 characters required.</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Retype Password</ion-label>
+      <ion-input formControlName="confirmPassword" placeholder="Enter password" type="password"></ion-input>
+      <ion-text class="error" *ngIf="registerFormSubmitted && registerForm.controls.confirmPassword.errors?.required">
+        Password is required.</ion-text>
+      <ion-text class="error"
+        *ngIf="registerFormSubmitted && !matchPassword() && !registerForm.controls.confirmPassword.errors?.required">
+        Password is not matched.</ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Role</ion-label>
+      <ion-select formControlName="role" placeholder="Select role">
+        <ion-select-option value="doctor">Doctor</ion-select-option>
+        <ion-select-option value="patient">Patient</ion-select-option>
+      </ion-select>
+      <ion-text class="error" *ngIf="registerFormSubmitted && registerForm.controls.role.errors">Role is required.
+      </ion-text>
+    </ion-item>
+
+    <br><br>
+
+    <ion-button class="btn-default" (click)="onRegisterClick()">Register</ion-button>
+
+    <ion-item lines="none">
+      <ion-text slot="end" class="link clr" (click)="onLoginNowClick('login')">Already registred? Click here</ion-text>
+    </ion-item>
+  </form>
+
+</ion-content>
